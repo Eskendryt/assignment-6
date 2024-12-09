@@ -6,15 +6,15 @@ const App = () => {
   const handleInputChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
+
     console.log(value);
   };
 
   return (
     <div>
-      <label htmlFor="inputField">Type something: </label>
+      <span>Type something: </span>
       <input
         type="text"
-        id="inputField"
         value={inputValue}
         onChange={handleInputChange}
         placeholder="Enter text here"
