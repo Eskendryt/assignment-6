@@ -1,7 +1,7 @@
 import { useState } from "react";
+import "./App.css"; // Import the CSS file
 
 const App = () => {
-
   const [userList, setUserList] = useState([
     {
       id: 1,
@@ -20,16 +20,16 @@ const App = () => {
     },
   ]);
 
-
   const handleEdit = (id) => {
     const updateList = userList.map((item) => {
       if (id === item.id) {
-        const editedName = prompt("EDit name", item.name);
-        const editedAge = prompt("Edit Age", item.age);
+        const editedName = prompt("Edit name", item.name);
+        const editedAge = prompt("Edit age", item.age);
 
         return {
-          ...item, name: editedName !== null ? editedName : item.name,
-          age: editedAge !== null ? editedAge : item.age,
+          ...item,
+          name: editedName !== null ? editedName : item.name,
+          age: editedAge !== null ? parseInt(editedAge) : item.age,
         };
       }
       return item;
@@ -38,17 +38,21 @@ const App = () => {
   };
 
   return (
-    <div>
-      {userList.map((item) => (
-        <div>
-          <p>Name: {item.name}</p>
-          <p>Age: {item.age}</p>
-          <button onClick={() => handleEdit(item.id)}>Edit</button>
-        </div>
-      ))}
+    <div className="container">
+      <h1 className="title">User List</h1>
+      <div className="user-list">
+        {userList.map((item) => (
+          <div className="user-card" key={item.id}>
+            <p className="user-name">Name: {item.name}</p>
+            <p className="user-age">Age: {item.age}</p>
+            <button className="edit-button" onClick={() => handleEdit(item.id)}>
+              Edit
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
-  )
-
-}
+  );
+};
 
 export default App;
