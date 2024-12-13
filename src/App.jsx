@@ -1,11 +1,9 @@
-import { useState } from "react";
-import myComponent2 from 'myComponent2.jsx'
+import React from 'react';
+import ComponentA from './ComponentA.jsx';
 
 function App() {
   return (
-    <div>
-      <myComponent2/>
-    </div>
+    <ComponentA />;
   );
 }
 
