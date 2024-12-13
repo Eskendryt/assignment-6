@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "React";
 
  
 
-function myComponent(){
+function myComponent2(){
  const [count, setCount] = useState(0);
    
     function addCount (){
@@ -17,4 +17,4 @@ function myComponent(){
     )
 }
 
-return default myComponent;
+return default myComponent2;
