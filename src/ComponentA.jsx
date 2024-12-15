@@ -1,22 +1,36 @@
-import React, { useState, createContext } from "react";
-import ComponentB from "./ComponentB";
+import React, { useState, useEffect } from "react";
 
-export const userContext = createContext();
+const Counter = () => {
+  const [count, setCount] = useState(0); // Initialize count to 0
+  const [isStarted, setIsStarted] = useState(false); // Track if the counter is running
 
-function ComponentA() {
+  useEffect(() => {
+    let intervalId;
 
-    const [user, setUser] = useState("Brocode");
+    if (isStarted) {
+      intervalId = setInterval(() => {
+        setCount((prevCount) => prevCount + 1); // Use callback form of setCount
+      }, 1000);
+    }
 
-    return (
-        <div className="box">
-            <h1>ComponentA</h1>
-            <h2>{`Hello ${user}`}</h2>
-            <userContext.Provider value={user}>
-                <ComponentB user={user} />
-            </userContext.Provider>
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount or state change
+  }, [isStarted]); // Dependency: re-run when isStarted changes
 
-        </div>
-    );
-}
+  const handleStart = () => {
+    setIsStarted(true);
+  };
 
-export default ComponentA;
+  const handleStop = () => {
+    setIsStarted(false);
+  };
+
+  return (
+    <div>
+      <h1>Value: {count}</h1>
+      <button onClick={handleStop}>Stop</button>
+      <button onClick={handleStart}>Start</button>
+    </div>
+  );
+};
+
+export default Counter;
