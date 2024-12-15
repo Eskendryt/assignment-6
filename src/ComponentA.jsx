@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 const Counter = () => {
-  const [count, setCount] = useState(0); // Initialize count to 0
-  const [isStarted, setIsStarted] = useState(false); // Track if the counter is running
+  const [count, setCount] = useState(0);
+  const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
     let intervalId;
 
     if (isStarted) {
       intervalId = setInterval(() => {
-        setCount((prevCount) => prevCount + 1); // Use callback form of setCount
+        setCount((prevCount) => prevCount + 1);
       }, 1000);
     }
 
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount or state change
-  }, [isStarted]); // Dependency: re-run when isStarted changes
+    return () => clearInterval(intervalId);
+  }, [isStarted]);
 
   const handleStart = () => {
     setIsStarted(true);
@@ -25,10 +25,12 @@ const Counter = () => {
   };
 
   return (
-    <div>
+    <div className="counter-container">
       <h1>Value: {count}</h1>
-      <button onClick={handleStop}>Stop</button>
-      <button onClick={handleStart}>Start</button>
+      <div className="button-container">
+        <button onClick={handleStop}>Stop</button>
+        <button onClick={handleStart}>Start</button>
+      </div>
     </div>
   );
 };
