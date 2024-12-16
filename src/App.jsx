@@ -1,11 +1,15 @@
-import React from 'react';
-import ComponentA from './ComponentA.jsx';
+import React, { createContext, useContext } from 'react';
+import Child from './Child';
 
+// Create a context
+const AppContext = createContext();
 
 function App() {
-  return (
-    <ComponentA />
-  );
-}
+    const value = "Hello from App!";
 
-export default App;
+    return (
+        <AppContext.Provider value={value}>
+            <Child />
+        </AppContext.Provider>
+    );
+}

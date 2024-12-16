@@ -1,13 +1,12 @@
-import ComponentC from "./ComponentC.jsx";
-
-function ComponentB() {
+function Child() {
+    const value = useContext(AppContext);
 
     return (
-        <div className="box">
-            <h1>ComponentB</h1>
-            
+        <div>
+            <h1>Child</h1>
+            <p>Received: {value}</p>
         </div>
     );
 }
 
-export default ComponentB;
+export default Child;
