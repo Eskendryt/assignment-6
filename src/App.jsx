@@ -1,11 +1,10 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext } from 'react';
 import Child from './Child';
 
-// Create a context
-const AppContext = createContext();
+export const AppContext = createContext();
 
 function App() {
-    const value = "Hello from App!";
+    const value = "Eskinder";
 
     return (
         <AppContext.Provider value={value}>
@@ -13,3 +12,5 @@ function App() {
         </AppContext.Provider>
     );
 }
+
+export default App;
